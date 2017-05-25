@@ -1,45 +1,58 @@
-const year = new Date().getFullYear();
-
 module.exports = {
-  enforceNewFolder: true,
   prompts: {
     project: {
       required: true,
-      message: 'What is the name of the new project?',
-      default: ':folderName:',
+      message: `What's the name of the new project?`,
+      default: `:folderName:`
     },
-    description: {
-      message: 'How would you describe the new project?',
-      default: 'Another fine project',
+    tagline: {
+      message: `How would you describe the new project (one-liner)?`,
+      default: `Yet Another Commandline Tool`
     },
-    name: {
-      message: 'What is your name?',
-      default: ':gitUser:',
-      store: true,
-    },
-    username: {
-      message: 'What is your GitHub username?',
-      default: ':gitUser:',
+    version: {
+      message: `Module semver?`,
+      default: `0.0.0`,
       store: true
     },
-    nodeVersion: {
-      message: 'What node version are you targetting?',
-      default: '6',
+    name: {
+      message: `What's your name?`,
+      default: `:gitUser:`,
+      store: true
     },
-    airbnb: {
-      type: 'confirm',
-      message: 'Include airbnb eslint rules?',
+    username: {
+      message: `What's your GitHub username?`,
+      default: `:gitUser:`,
+      store: true
+    },
+    nodeTarget: {
+      message: `What node version are you targeting?`,
+      default: `6`,
+      store: true
+    },
+    includeTravis: {
+      type: `confirm`,
+      message: `Include Travis-CI config file and badge?`,
       default: true,
+      store: true
     },
+    includeCodecovIo: {
+      type: `confirm`,
+      message: `Include codecov.io badge?`,
+      default: true,
+      store: true
+    },
+    prettier: {
+      type: `confirm`,
+      message: `Include prettier-eslint?`,
+      default: true,
+      store: true
+    }
   },
   filters: {
-    '.eslintrc': 'airbnb'
+    '.eslintrc': `prettier`,
+    '.eslintignore': `prettier`,
+    '.travis.yml': `includeTravis`
   },
   installDependencies: true,
-  gitInit: true,
-  post({ log, chalk, folderName, isNewFolder }) {
-    log.success(`Project bootstrapped successfully into ${chalk.yellow(folderName)}`);
-    const cmd = (isNewFolder) ? `cd "${folderName}"; npm start` : 'npm start';
-    log.info(`Run ${chalk.cyan(cmd)} for additional instructions`);
-  }
-};
+  gitInit: true
+}

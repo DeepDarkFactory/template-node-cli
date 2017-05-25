@@ -1,16 +1,20 @@
-# template-node-module
-
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/w33ble/template-node-module/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/therealklanni/template-node-cli/master/LICENSE)
 ![Project Status](https://img.shields.io/badge/status-active-green.svg)
 
-Template for creating new node modules, powered by [sao.js](https://sao.js.org).
+# template-node-cli
+
+Template for creating barebones node command-line modules, powered by [sao.js](https://sao.js.org).
 
 ## Usage
 
-You'll need to install `sao` globally.
-
-```js
-sao w33ble/template-node-module target-path
+```
+sao therealklanni/template-node-cli [target-path]
 ```
 
+> If `target-path` is omitted, current working directory will be used.
+
 Then, simply answer the prompts and you're ready to go!
+
+#### License
+
+MIT © [therealklanni](https://github.com/therealklanni)
